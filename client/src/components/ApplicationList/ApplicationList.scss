@@ -1,0 +1,10 @@
+.applist {
+  border: 1px solid black;
+  margin: 15px;
+  width: 40vw;
+
+  &__title {
+    color: teal;
+    font-weight: bold;
+  }
+}

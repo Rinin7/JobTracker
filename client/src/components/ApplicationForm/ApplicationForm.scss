@@ -1,0 +1,13 @@
+.appform {
+  width: 50vw;
+  &__form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+  }
+}
