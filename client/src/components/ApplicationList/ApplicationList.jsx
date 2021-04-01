@@ -110,39 +110,47 @@ function ApplicationList({ appList }) {
 
   return (
     <div className="applist">
-      {editState ? (
-        <div className="applist__container" key={id}>
-          <input type="text" id="company" className="applist__company" onChange={handleCompanyChange} placeholder={appList.company} value={company === "" ? appList.company : company} />
-          <input type="text" id="title" onChange={handleTitleChange} placeholder={appList.title} value={title === "" ? appList.title : title} />
-          <textarea type="text" id="description" onChange={handleDescriptionChange} placeholder={appList.description} value={description === "" ? appList.description : description} />
-          <p>{appList.timeStamp ? timeSince(appList.timeStamp.seconds * 1000) : ""}</p>
-          <select className="applist__status" id="status" onChange={handleStatusChange} placeholder={appList.status} value={status === "" ? appList.status : status}>
-            <option value="Applied">Applied</option>
-            <option value="Interviewing">Interviewing</option>
-            <option value="Rejected">Rejected</option>
-          </select>
-          <input type="text" id="link" onChange={handleLinkChange} placeholder={appList.link} value={link === "" ? appList.link : link} />
-        </div>
-      ) : (
-        <div className="applist__container" key={id}>
-          {appList.term === "Full Time" ? <img src={Fulltime} className="applist__term" /> : ""}
-          {appList.term === "Part Time" ? <img src={Parttime} className="applist__term" /> : ""}
-          {appList.term === "Contract" ? <img src={Contractor} className="applist__term" /> : ""}
-          {appList.term === "Temporary" ? <img src={Temp} className="applist__term" /> : ""}
-          <h1 className="applist__title">{appList.company}</h1>
-          <h2>{appList.title}</h2>
-          <p>{appList.description}</p>
-          <p>{appList.timeStamp ? timeSince(appList.timeStamp.seconds * 1000) : ""}</p>
-          <p>{appList.status}</p>
-          <a href={appList.link} target="_blank" rel="noreferrer noopener">
-            View Job Posting
-          </a>
-        </div>
-      )}
+      <div className="applist__container">
+        {editState ? (
+          <>
+            <input type="text" id="company" className="applist__company" onChange={handleCompanyChange} placeholder={appList.company} value={company === "" ? appList.company : company} />
+            <input type="text" id="title" onChange={handleTitleChange} placeholder={appList.title} value={title === "" ? appList.title : title} />
+            <textarea type="text" id="description" onChange={handleDescriptionChange} placeholder={appList.description} value={description === "" ? appList.description : description} />
+            <p>{appList.timeStamp ? timeSince(appList.timeStamp.seconds * 1000) : ""}</p>
+            <select className="applist__status" id="status" onChange={handleStatusChange} placeholder={appList.status} value={status === "" ? appList.status : status}>
+              <option value="Applied">Applied</option>
+              <option value="Interviewing">Interviewing</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+            <input type="text" id="link" onChange={handleLinkChange} placeholder={appList.link} value={link === "" ? appList.link : link} />
+          </>
+        ) : (
+          <>
+            <div className="applist__job" key={id}>
+              <a href={appList.link} target="_blank" rel="noreferrer noopener">
+                <p className="applist__header">{appList.company}</p>{" "}
+              </a>
+              <p className="applist__subheader">
+                {appList.title} | {appList.location}
+              </p>
+              <p className="applist__description">{appList.description}</p>
+            </div>
+            <div className="applist__applied">
+              <p className="applist__status">{appList.status}</p>
+              <p className="applist__description">{appList.timeStamp ? timeSince(appList.timeStamp.seconds * 1000) : ""}</p>
+            </div>
+          </>
+        )}
 
-      <img src={Delete} className="applist__delete" onClick={() => deleteApplication(id)} />
-
-      {editState === false ? <img src={Edit} className="applist__edit" onClick={() => editApplication(id)} /> : <img src={Save} className="applist__save" onClick={() => saveApplication(id)} />}
+        <div className="applist__buttons">
+          {editState === false ? (
+            <img src={Edit} className="applist__button" onClick={() => editApplication(id)} />
+          ) : (
+            <img src={Save} className="applist__button" onClick={() => saveApplication(id)} />
+          )}
+          <img src={Delete} className="applist__button" onClick={() => deleteApplication(id)} />
+        </div>
+      </div>
     </div>
   );
 }

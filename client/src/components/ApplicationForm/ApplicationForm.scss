@@ -7,10 +7,93 @@
     width: 80%;
     display: flex;
     flex-direction: column;
+    font-family: "Avenir";
   }
 
   &__title {
     display: flex;
     justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  &__label {
+    padding-bottom: 4px;
+    font-size: 0.875rem;
+    font-weight: bold;
+  }
+
+  &__input {
+    border: 1px solid #bdc5d5;
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding: 8px 16px;
+    height: 36px;
+    margin-bottom: 30px;
+    font-size: 0.8125rem;
+
+    &:active,
+    &:focus {
+      border-color: teal;
+      outline: none;
+    }
+  }
+
+  &__textbox {
+    @extend .appform__input;
+    height: 120px;
+    resize: none;
+    font-family: "Avenir";
+    padding: 16px 16px;
+    margin: 0;
+  }
+
+  &__select {
+    @extend .appform__input;
+    padding: 7px 15px 9px;
+    background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
+    background-repeat: no-repeat, repeat;
+    background-position: right 23px top 50%, 0 0;
+    background-size: 1.5em auto, 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    color: #6a6a6a;
+  }
+
+  &__submit {
+    background-color: teal;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    &:hover {
+      border: 5px solid black;
+    }
+  }
+
+  &__cancel {
+    background-color: white;
+    color: #5c667e;
+    border: 1px solid #bdc5d5;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    &:hover {
+      border: 5px solid teal;
+    }
   }
 }

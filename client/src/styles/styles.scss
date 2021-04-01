@@ -1,0 +1,13 @@
+@import "./partials/variables";
+@import "./partials/mixins";
+@import "./partials/typography";
+
+body {
+  margin: 0;
+  font-family: "Avenir", "Roboto", sans-serif;
+  color: #323232;
+}
+
+a {
+  text-decoration: none;
+}

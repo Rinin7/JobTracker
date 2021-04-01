@@ -69,10 +69,15 @@ function ApplicationForm() {
       return setFormError("Please enter a brief description");
     }
 
-    db.collection("applications").add({ company, title, description, timeStamp, link, status: "Applied", term });
+    db.collection("applications").add({ company, title, description, timeStamp, link, status: "Applied", term, location });
 
     event.target.reset();
     setFormError("");
+  };
+
+  const handleCancel = (event) => {
+    event.preventDefault();
+    event.target.reset();
   };
 
   return (
@@ -108,9 +113,12 @@ function ApplicationForm() {
         <label className="appform__label" htmlFor="description">
           Description
         </label>
-        <textarea className="appform__input" type="text" id="description" onChange={handleDescriptionChange} placeholder="Enter the description here" />
+        <textarea className="appform__textbox" type="text" id="description" onChange={handleDescriptionChange} placeholder="Enter the description here" />
         <p>{formError}</p>
         <button className="appform__submit">SUBMIT</button>
+        <button className="appform__cancel" onClick={handleCancel}>
+          CANCEL
+        </button>
       </form>
     </div>
   );
