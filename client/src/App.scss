@@ -1,7 +1,10 @@
 .app {
-  display: flex;
-  width: 100%;
-  justify-content: center;
+  &__main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 63px;
+  }
 
   &__list {
     display: flex;

@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  padding: 0 5%;
+  align-items: center;
+  color: white;
+  background-color: teal;
+  position: fixed;
+  width: 90%;
+  height: 64px;
+  top: 0;
+  left: 0;
+
+  &__logo {
+    height: 50px;
+    width: 50px;
+    margin-right: -12px;
+  }
+
+  &__title-container {
+    display: flex;
+    width: 25%;
+    align-items: center;
+  }
+
+  &__user-container {
+    justify-content: flex-end;
+    display: flex;
+    flex-grow: 1;
+  }
+}

@@ -7,8 +7,12 @@ function ApplicationForm() {
   const [company, setCompany] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
   const timeStamp = firebase.firestore.FieldValue.serverTimestamp();
   const db = fire.firestore();
+  const [formError, setFormError] = useState("");
+  const [location, setLocation] = useState("");
+  const [term, setTerm] = useState("");
 
   const handleCompanyChange = (event) => {
     setCompany(event.target.value);
@@ -22,10 +26,53 @@ function ApplicationForm() {
     setDescription(event.target.value);
   };
 
+  const handleLinkChange = (event) => {
+    setLink(event.target.value);
+  };
+
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+  };
+
+  const handleTermChange = (event) => {
+    setTerm(event.target.value);
+  };
+
+  // const handleStatusChange = (event) => {
+  //   setStatus(event.target.value);
+  // };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    db.collection("applications").add({ company, title, description, timeStamp });
+    if (company === "") {
+      return setFormError("Please enter a company name");
+    }
+
+    if (title === "") {
+      return setFormError("Please enter a job title");
+    }
+
+    if (location === "") {
+      return setFormError("Please enter a location");
+    }
+
+    if (term === "") {
+      return setFormError("Please enter a term");
+    }
+
+    if (link === "") {
+      return setFormError("Please include a link for the job posting");
+    }
+
+    if (description === "") {
+      return setFormError("Please enter a brief description");
+    }
+
+    db.collection("applications").add({ company, title, description, timeStamp, link, status: "Applied", term });
+
+    event.target.reset();
+    setFormError("");
   };
 
   return (
@@ -40,10 +87,29 @@ function ApplicationForm() {
           Title
         </label>
         <input className="appform__input" type="text" id="title" onChange={handleTitleChange} placeholder="Enter the title here" />
+        <label className="appform__label" htmlFor="location">
+          Location
+        </label>
+        <input className="appform__input" type="text" id="location" onChange={handleLocationChange} placeholder="Enter the location here" />
+        <label className="appform__label" htmlFor="term">
+          Term
+        </label>
+        <select className="appform__select" id="term" onChange={handleTermChange}>
+          <option value="">Please choose...</option>
+          <option value="Full Time">Full Time</option>
+          <option value="Part Time">Part Time</option>
+          <option value="Temporary">Temporary</option>
+          <option value="Contract">Contract</option>
+        </select>
+        <label className="appform__label" htmlFor="link">
+          Link
+        </label>
+        <input className="appform__input" type="text" id="link" onChange={handleLinkChange} placeholder="Enter the application link here" />
         <label className="appform__label" htmlFor="description">
           Description
         </label>
         <textarea className="appform__input" type="text" id="description" onChange={handleDescriptionChange} placeholder="Enter the description here" />
+        <p>{formError}</p>
         <button className="appform__submit">SUBMIT</button>
       </form>
     </div>

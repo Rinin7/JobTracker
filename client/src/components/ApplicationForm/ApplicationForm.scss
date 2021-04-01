@@ -1,5 +1,8 @@
 .appform {
-  width: 50vw;
+  width: 30vw;
+  height: 100%;
+  position: fixed;
+
   &__form {
     width: 80%;
     display: flex;
