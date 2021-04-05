@@ -15,11 +15,12 @@
   }
 
   &__job {
-    flex: 1 1 50%;
+    width: 50%;
+    padding-right: 40px;
   }
 
   &__applied {
-    flex: 1 1;
+    width: 30%;
   }
 
   &__buttons {
@@ -49,5 +50,10 @@
   &__button {
     width: 70px;
     height: 70px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #dcdcdc;
+    }
   }
 }

@@ -115,9 +115,9 @@ function ApplicationForm() {
         </label>
         <textarea className="appform__textbox" type="text" id="description" onChange={handleDescriptionChange} placeholder="Enter the description here" />
         <p>{formError}</p>
-        <button className="appform__submit">SUBMIT</button>
+        <button className="appform__submit">Submit</button>
         <button className="appform__cancel" onClick={handleCancel}>
-          CANCEL
+          Cancel
         </button>
       </form>
     </div>

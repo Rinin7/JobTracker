@@ -1,0 +1,19 @@
+// Button Mixin
+@mixin button-design {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: teal;
+  color: white;
+  font-family: "Avenir";
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
