@@ -3,7 +3,7 @@ import "./ApplicationForm.scss";
 import fire from "../../config/Fire";
 import firebase from "firebase";
 
-function ApplicationForm() {
+function ApplicationForm({ user }) {
   const [company, setCompany] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -69,7 +69,7 @@ function ApplicationForm() {
       return setFormError("Please enter a brief description");
     }
 
-    db.collection("applications").add({ company, title, description, timeStamp, link, status: "Applied", term, location });
+    db.collection("applications").add({ company, title, description, timeStamp, link, status: "Applied", term, location, hostId: user.uid });
 
     event.target.reset();
     setFormError("");

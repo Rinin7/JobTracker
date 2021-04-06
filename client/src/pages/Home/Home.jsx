@@ -6,12 +6,14 @@ import ApplicationForm from "../../components/ApplicationForm/ApplicationForm";
 import Header from "../../components/Header/Header";
 
 function Home({ user }) {
+  // const { uid } = user;
   const [activeApplications, setActiveApplications] = useState([]);
   const [rejectedApplications, setRejectedApplications] = useState([]);
   const db = fire.firestore();
 
   function getActiveApplications() {
     db.collection("applications")
+      .where("hostId", "==", user.uid)
       .where("status", "!=", "Not Selected")
       .orderBy("status")
       .orderBy("timeStamp", "desc")
@@ -23,6 +25,7 @@ function Home({ user }) {
 
   function getRejectedApplications() {
     db.collection("applications")
+      .where("hostId", "==", user.uid)
       .where("status", "==", "Not Selected")
       .orderBy("timeStamp", "desc")
       .onSnapshot((querySnapshot) => {
@@ -32,8 +35,15 @@ function Home({ user }) {
   }
 
   useEffect(() => {
-    getActiveApplications();
-    getRejectedApplications();
+    if (user) {
+      getActiveApplications();
+      getRejectedApplications();
+
+      return () => {
+        getActiveApplications();
+        getRejectedApplications();
+      };
+    }
   }, []);
 
   return (
@@ -41,11 +51,11 @@ function Home({ user }) {
       <Header key={activeApplications.id} appList={activeApplications} user={user} />
       <div className="home__main">
         <div className="home__form">
-          <ApplicationForm />
+          <ApplicationForm user={user} />
         </div>
         <div className="home__list">
           <div className="home__accepted">
-            <details>
+            <details open>
               <summary className="home__title">Active Applications😄</summary>
               {activeApplications.map((activeApplication) => (
                 <ApplicationList key={activeApplication.id} appList={activeApplication} />
