@@ -15,7 +15,7 @@ function DeleteModal({ closeDeleteHandler, deleteApplication, appList }) {
           <button className="delete__button-cancel" onClick={closeDeleteHandler}>
             Cancel
           </button>
-          <button className="delete__button-delete" onClick={() => deleteApplication}>
+          <button className="delete__button-delete" onClick={deleteApplication}>
             Delete
           </button>
         </div>

@@ -1,42 +1,67 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
-import fire from "./config/Fire";
-import ApplicationList from "./components/ApplicationList/ApplicationList";
-import ApplicationForm from "./components/ApplicationForm/ApplicationForm";
-import Header from "./components/Header/Header";
+import fire from "../src/config/Fire";
+import Home from "../src/pages/Home/Home";
+import Login from "../src/pages/Login/Login";
+import Signup from "../src/pages/Signup/Signup";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 function App() {
-  const [applications, setApplications] = useState([]);
+  const [user, setUser] = useState(undefined);
+  const [authListenerAdded, setAuthListenerAdded] = useState(false);
+  const [username, setUsername] = useState("");
   const db = fire.firestore();
 
-  function getApplications() {
-    db.collection("applications")
-      .orderBy("timeStamp", "desc")
-      .onSnapshot((querySnapshot) => {
-        const application = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-        setApplications(application);
-      });
-  }
+  // FUNCTION FOR AUTHENTICATION
+  const authListener = () => {
+    fire.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user);
+        setUser(user);
+        localStorage.setItem("isAuthenticated", "true");
+      } else {
+        setUser(null);
+        localStorage.removeItem("isAuthenticated");
+        setUsername("");
+      }
+    });
+
+    setAuthListenerAdded(true);
+  };
 
   useEffect(() => {
-    getApplications();
-  }, []);
+    if (!authListenerAdded) {
+      authListener();
+    }
+
+    if (user && username === "") {
+      db.doc(`users/${user.uid}`)
+        .get()
+        .then((documentSnapshot) => {
+          const data = documentSnapshot.data();
+
+          if (data && data.username) {
+            setUsername(documentSnapshot.data().username);
+          }
+        });
+    }
+  }, [user]);
+
+  // FUNCTION TO CHANGE ROUTES TO PROTECTED ROUTES
+  function PrivateRoute({ component: Component, ...rest }) {
+    return <Route {...rest} render={(props) => (localStorage.isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />)} />;
+  }
 
   return (
-    <section className="app">
-      <Header key={applications.id} appList={applications} />
-      <div className="app__main">
-        <div className="app__form">
-          <ApplicationForm />
-        </div>
-        <div className="app__list">
-          <h1 className="app__title">Applications😄</h1>
-          {applications.map((application) => (
-            <ApplicationList key={application.id} appList={application} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <BrowserRouter>
+      <section className="app">
+        <Switch>
+          <Route path="/login" exact component={(routerProps) => <Login {...routerProps} user={user} />} />
+          <Route path="/signup" exact component={(routerProps) => <Signup {...routerProps} user={user} />} />
+          <PrivateRoute path="/" exact component={(routerProps) => <Home {...routerProps} user={user} />} />
+        </Switch>
+      </section>
+    </BrowserRouter>
   );
 }
 
