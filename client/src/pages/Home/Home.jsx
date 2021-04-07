@@ -6,7 +6,6 @@ import ApplicationForm from "../../components/ApplicationForm/ApplicationForm";
 import Header from "../../components/Header/Header";
 
 function Home({ user }) {
-  // const { uid } = user;
   const [activeApplications, setActiveApplications] = useState([]);
   const [rejectedApplications, setRejectedApplications] = useState([]);
   const db = fire.firestore();
@@ -38,11 +37,6 @@ function Home({ user }) {
     if (user) {
       getActiveApplications();
       getRejectedApplications();
-
-      return () => {
-        getActiveApplications();
-        getRejectedApplications();
-      };
     }
   }, []);
 

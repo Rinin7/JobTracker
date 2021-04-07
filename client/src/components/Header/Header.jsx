@@ -30,17 +30,13 @@ function Header({ appList, user }) {
   useEffect(() => {
     if (user) {
       getUsername();
-
-      return () => {
-        getUsername();
-      };
     }
   }, []);
 
   return (
     <div className="header">
       <div className="header__title-container">
-        <img src={Gear} className="header__logo" />
+        <img src={Gear} className="header__logo" alt="gear logo" />
         <h3 className="header__title">JTrack</h3>
       </div>
       <div className="header__user-container">
@@ -49,11 +45,11 @@ function Header({ appList, user }) {
         </p>
       </div>
       <div className="header__logout">
-        <a className="header__logout-button" href="" onClick={logout}>
-          <img className="header__logout-avatar" src={Logout} />
+        <button className="header__logout-button" onClick={logout}>
+          <img className="header__logout-avatar" src={Logout} alt="open door with an arrow point out" />
 
-          <div class="header__logout-text">LOGOUT</div>
-        </a>
+          <div className="header__logout-text">LOGOUT</div>
+        </button>
       </div>
     </div>
   );

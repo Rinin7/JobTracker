@@ -31,7 +31,7 @@ function StatusModal({ closeStatusHandler, updateStatus }) {
         <button className="status__button" onClick={() => notSelectedHandler("Not Selected")}>
           <div className="status__selection">
             <div className="status__avatar-container">
-              <img className="status__not-selected-avatar status__avatar" src={Rejected} />
+              <img className="status__not-selected-avatar status__avatar" src={Rejected} alt="thumb down icon" />
             </div>
             <div className="status__content-container">
               <h2 className="status__title">I was not selected</h2>
@@ -42,7 +42,7 @@ function StatusModal({ closeStatusHandler, updateStatus }) {
         <button className="status__button" onClick={() => interviewingHandler("Interviewing")}>
           <div className="status__selection">
             <div className="status__avatar-container">
-              <img className="status__interviewing-avatar status__avatar" src={Interviewed} />
+              <img className="status__interviewing-avatar status__avatar" src={Interviewed} alt="two chat bubbles" />
             </div>
             <div className="status__content-container">
               <h2 className="status__title">I'm interviewing</h2>
@@ -53,7 +53,7 @@ function StatusModal({ closeStatusHandler, updateStatus }) {
         <button className="status__button" onClick={() => offerHandler("Received an offer")}>
           <div className="status__selection">
             <div className="status__avatar-container">
-              <img className="status__offer-avatar status__avatar" src={Offered} />
+              <img className="status__offer-avatar status__avatar" src={Offered} alt="thumb up icon" />
             </div>
             <div className="status__content-container">
               <h2 className="status__title">I received an offer</h2>
@@ -64,7 +64,7 @@ function StatusModal({ closeStatusHandler, updateStatus }) {
         <button className="status__button" onClick={() => hiredHandler("Hired")}>
           <div className="status__selection">
             <div className="status__avatar-container">
-              <img className="status__hired-avatar status__avatar" src={Hired} />
+              <img className="status__hired-avatar status__avatar" src={Hired} alt="person avatar" />
             </div>
             <div className="status__content-container">
               <h2 className="status__title">I was hired</h2>

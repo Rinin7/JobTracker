@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import "./ApplicationList.scss";
 import fire from "../../config/Fire";
-import Fulltime from "../../assets/logos/fulltime.png";
-import Parttime from "../../assets/logos/parttime.png";
-import Contractor from "../../assets/logos/contractor.png";
-import Temp from "../../assets/logos/temp.png";
 import Edit from "../../assets/logos/edit.png";
 import Delete from "../../assets/logos/delete.png";
 import StatusModal from "../StatusModal/StatusModal";
@@ -83,8 +79,8 @@ function ApplicationList({ appList }) {
           <p className="applist__description">{timeStamp ? new Date(timeStamp.seconds * 1000).toDateString() : ""}</p>
         </div>
         <div className="applist__buttons">
-          <img src={Edit} className="applist__button" onClick={() => statusHandler(id)} />
-          <img src={Delete} className="applist__button" onClick={() => deleteHandler(id)} />
+          <img src={Edit} className="applist__button" onClick={() => statusHandler(id)} alt="pencil logo" />
+          <img src={Delete} className="applist__button" onClick={() => deleteHandler(id)} alt="trash can logo" />
         </div>
       </div>
     </div>

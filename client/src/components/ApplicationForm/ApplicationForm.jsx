@@ -38,10 +38,6 @@ function ApplicationForm({ user }) {
     setTerm(event.target.value);
   };
 
-  // const handleStatusChange = (event) => {
-  //   setStatus(event.target.value);
-  // };
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -73,11 +69,6 @@ function ApplicationForm({ user }) {
 
     event.target.reset();
     setFormError("");
-  };
-
-  const handleCancel = (event) => {
-    event.preventDefault();
-    event.target.reset();
   };
 
   return (
@@ -115,10 +106,19 @@ function ApplicationForm({ user }) {
         </label>
         <textarea className="appform__textbox" type="text" id="description" onChange={handleDescriptionChange} placeholder="Enter the description here" />
         <p>{formError}</p>
-        <button className="appform__submit">Submit</button>
-        <button className="appform__cancel" onClick={handleCancel}>
-          Cancel
-        </button>
+        <div className="appform__submit-container">
+          <button aria-label="submit" className="appform__submit" data-text="Submit">
+            <span className="appform__submit-span">g</span>
+            <span className="appform__submit-span">o</span>
+            <span className="appform__submit-span">o</span>
+            <span className="appform__submit-span">d</span>
+            <span className="appform__submit-span"> </span>
+            <span className="appform__submit-span">j</span>
+            <span className="appform__submit-span">o</span>
+            <span className="appform__submit-span">b</span>
+            <span className="appform__submit-span">!</span>
+          </button>
+        </div>
       </form>
     </div>
   );

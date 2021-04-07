@@ -86,7 +86,7 @@ function Signup({ user }) {
       <div className="signup__redirect">
         <p>
           Already have an account?{" "}
-          <a className="signup__login-link" href="/">
+          <a className="signup__login-link" href="/login">
             Log In Here.
           </a>
         </p>

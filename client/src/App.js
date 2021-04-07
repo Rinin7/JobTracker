@@ -16,7 +16,6 @@ function App() {
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
-        console.log(user);
         setUser(user);
         localStorage.setItem("isAuthenticated", "true");
       } else {
