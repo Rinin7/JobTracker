@@ -11,6 +11,7 @@
     display: flex;
     justify-content: flex-end;
     padding: 15px;
+    box-sizing: border-box;
 
     &-text {
       padding-right: 10px;
@@ -47,9 +48,9 @@
     border: 1px solid grey;
     border-radius: 5px;
     padding: 0 5%;
-    width: 400px;
+    width: 28%;
     background-color: white;
-    margin: 80px;
+    margin: 4%;
 
     &-title {
       font-size: 20px;
