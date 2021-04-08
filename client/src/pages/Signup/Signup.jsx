@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import "./Signup.scss";
 import fire from "../../config/Fire";
 import { useHistory } from "react-router-dom";
+import OpenArrow from "../../assets/logos/openarrow.png";
+import AboutModal from "../../components/AboutModal/AboutModal";
 
 function Signup({ user }) {
   const db = fire.firestore();
@@ -11,6 +13,7 @@ function Signup({ user }) {
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [validationError, setValidationError] = useState("");
+  const [aboutState, setAboutState] = useState(false);
 
   // FUNCTION FOR SIGN UP
   function signupActions(event) {
@@ -56,40 +59,57 @@ function Signup({ user }) {
     setUsername(event.target.value);
   };
 
+  // FUNCTION TO SHOW CREATOR INFO
+  const aboutHandler = () => {
+    setAboutState(true);
+  };
+
+  // FUNCTION TO CLOSE CREATOR INFO
+  const closeAboutHandler = () => {
+    setAboutState(false);
+  };
+
   return (
     <section className="signup">
-      <form className="signup__form">
-        <h1 className="signup__header">Sign Up</h1>
-        <label className="signup__form-title" htmlFor="email">
-          Email
-        </label>
-        <input className="signup__form-input" type="email" id="email" name="email" placeholder="Enter your email here" ref={emailRef} />
-        <label className="signup__form-title" htmlFor="username">
-          Username
-        </label>
-        <input className="signup__form-input" type="text" id="username" name="username" placeholder="Choose a username" value={username} onChange={handleUsernameChange} />
-        <label className="signup__form-title" htmlFor="password">
-          Password
-        </label>
-        <input className="signup__form-input" type="password" id="password" name="password" placeholder="Choose a password" ref={passwordRef} />
-        <label className="signup__form-title" htmlFor="confirm">
-          Password Confirmation
-        </label>
-        <input className="signup__form-input" type="password" id="confirm" name="confirm" placeholder="Re-enter your password" ref={passwordConfirmRef} />
-        <div className="signup__form-error-container">
-          <p className="signup__form-error">{validationError}</p>
-        </div>
-        <button className="signup__form-signup" type="submit" onClick={signupActions}>
-          Sign Up
-        </button>
-      </form>
-      <div className="signup__redirect">
-        <p>
-          Already have an account?{" "}
-          <a className="signup__login-link" href="/login">
-            Log In Here.
-          </a>
-        </p>
+      {aboutState === true && <AboutModal closeAboutHandler={closeAboutHandler} />}
+      <div className="signup__about" onClick={aboutHandler}>
+        <p className="signup__about-text">ABOUT THE CREATOR</p>
+        <img src={OpenArrow} className="signup__about-open" />
+      </div>
+      <div className="signup__container">
+        <form className="signup__form">
+          <h1 className="signup__header">JTrack Sign Up</h1>
+          <label className="signup__form-title" htmlFor="email">
+            Email
+          </label>
+          <input className="signup__form-input" type="email" id="email" name="email" placeholder="Enter your email here" ref={emailRef} />
+          <label className="signup__form-title" htmlFor="username">
+            Username
+          </label>
+          <input className="signup__form-input" type="text" id="username" name="username" placeholder="Choose a username" value={username} onChange={handleUsernameChange} />
+          <label className="signup__form-title" htmlFor="password">
+            Password
+          </label>
+          <input className="signup__form-input" type="password" id="password" name="password" placeholder="Choose a password" ref={passwordRef} />
+          <label className="signup__form-title" htmlFor="confirm">
+            Password Confirmation
+          </label>
+          <input className="signup__form-input" type="password" id="confirm" name="confirm" placeholder="Re-enter your password" ref={passwordConfirmRef} />
+          <div className="signup__form-error-container">
+            <p className="signup__form-error">{validationError}</p>
+          </div>
+          <button className="signup__form-signup" type="submit" onClick={signupActions}>
+            Sign Up
+          </button>
+          <div className="signup__redirect">
+            <p>
+              Already have an account?{" "}
+              <a className="signup__login-link" href="/login">
+                Log In Here.
+              </a>
+            </p>
+          </div>
+        </form>
       </div>
     </section>
   );

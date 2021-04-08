@@ -137,6 +137,21 @@
       transition-delay: 0.15s;
     }
 
+    &:hover .appform__submit-span:nth-child(7),
+    &:focus .appform__submit-span:nth-child(7) {
+      transition-delay: 0.175s;
+    }
+
+    &:hover .appform__submit-span:nth-child(8),
+    &:focus .appform__submit-span:nth-child(8) {
+      transition-delay: 0.2s;
+    }
+
+    &:hover .appform__submit-span:nth-child(9),
+    &:focus .appform__submit-span:nth-child(9) {
+      transition-delay: 0.225s;
+    }
+
     &-span {
       display: inline-block;
       min-width: 0.3em;

@@ -4,6 +4,7 @@ import fire from "../../config/Fire";
 import ApplicationList from "../../components/ApplicationList/ApplicationList";
 import ApplicationForm from "../../components/ApplicationForm/ApplicationForm";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 function Home({ user }) {
   const [activeApplications, setActiveApplications] = useState([]);
@@ -66,6 +67,7 @@ function Home({ user }) {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 }
