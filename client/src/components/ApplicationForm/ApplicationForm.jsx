@@ -108,7 +108,7 @@ function ApplicationForm({ user }) {
           Description
         </label>
         <textarea className="appform__textbox" type="text" id="description" onChange={handleDescriptionChange} placeholder="Enter the description here" />
-        <p>{formError}</p>
+        {formError ? <p className="appform__error">{formError}</p> : <div></div>}
         <div className="appform__submit-container">
           <button aria-label="submit" className="appform__submit" data-text="Submit">
             <span className="appform__submit-span">g</span>
@@ -116,9 +116,10 @@ function ApplicationForm({ user }) {
             <span className="appform__submit-span">o</span>
             <span className="appform__submit-span">d</span>
             <span className="appform__submit-span"> </span>
-            <span className="appform__submit-span">j</span>
-            <span className="appform__submit-span">o</span>
-            <span className="appform__submit-span">b</span>
+            <span className="appform__submit-span">l</span>
+            <span className="appform__submit-span">u</span>
+            <span className="appform__submit-span">c</span>
+            <span className="appform__submit-span">k</span>
             <span className="appform__submit-span">!</span>
           </button>
         </div>

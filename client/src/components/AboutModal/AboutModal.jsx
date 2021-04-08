@@ -17,7 +17,6 @@ function AboutModal({ closeAboutHandler }) {
           <div className="about__headshot-container">
             <img className="about__headshot" src={Headshot} alt="headshot of Ryan Doubinin, creator of JTrack" />
           </div>
-
           <div className="about__socials">
             <a href="https://www.linkedin.com/in/ryan-doubinin/" target="_blank" rel="noreferrer">
               <img className="about__socials-logo" src={LinkedIn} alt="LinkedIn social media logo" title="Ryan Doubinin's LinkedIn" />
