@@ -12,7 +12,7 @@ function ApplicationList({ appList }) {
   const [updateThis, setUpdateThis] = useState(false);
   const [deleteThis, setDeleteThis] = useState(false);
 
-  // FUNCTION TO DELETE APPLICATION
+  // FUNCTION TO DELETE APPLICATION FROM DB
   function deleteApplication() {
     db.collection("applications")
       .doc(id)
@@ -22,7 +22,7 @@ function ApplicationList({ appList }) {
       });
   }
 
-  // FUNCTION TO UPDATE STATUS
+  // FUNCTION TO UPDATE STATUS IN DB
   function updateStatus(value) {
     db.collection("applications")
       .doc(id)
@@ -34,18 +34,22 @@ function ApplicationList({ appList }) {
     setUpdateThis(false);
   }
 
+  // FUNCTION TO OPEN EDIT MODAL
   const statusHandler = () => {
     setUpdateThis(true);
   };
 
+  // FUNCTION TO CLOSE EDIT MODAL
   const closeStatusHandler = () => {
     setUpdateThis(false);
   };
 
+  // FUNCTION TO OPEN DELETE MODAL
   const deleteHandler = () => {
     setDeleteThis(true);
   };
 
+  // FUNCTION TO CLOSE DELETE MODAL
   const closeDeleteHandler = () => {
     setDeleteThis(false);
   };

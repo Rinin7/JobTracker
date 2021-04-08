@@ -6,6 +6,7 @@ import Hired from "../../assets/logos/hired.png";
 import Interviewed from "../../assets/logos/interviewed.png";
 
 function StatusModal({ closeStatusHandler, updateStatus }) {
+  // FUNCTIONS TO UPDATE STATUS VALUE
   const notSelectedHandler = (value) => {
     updateStatus(value);
   };

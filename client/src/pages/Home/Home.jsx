@@ -4,13 +4,13 @@ import fire from "../../config/Fire";
 import ApplicationList from "../../components/ApplicationList/ApplicationList";
 import ApplicationForm from "../../components/ApplicationForm/ApplicationForm";
 import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 
 function Home({ user }) {
   const [activeApplications, setActiveApplications] = useState([]);
   const [rejectedApplications, setRejectedApplications] = useState([]);
   const db = fire.firestore();
 
+  // FUNCTION TO GET ALL APPLICATION DOCS THAT DO NOT INCLUDE "NOT SELECTED" STATUS
   function getActiveApplications() {
     db.collection("applications")
       .where("hostId", "==", user.uid)
@@ -23,6 +23,7 @@ function Home({ user }) {
       });
   }
 
+  // FUNCTION TO GET ALL APPLICATION DOCS THAT INCLUDE "NOT SELECTED" STATUS
   function getRejectedApplications() {
     db.collection("applications")
       .where("hostId", "==", user.uid)
@@ -67,7 +68,6 @@ function Home({ user }) {
           </div>
         </div>
       </div>
-      <Footer />
     </section>
   );
 }

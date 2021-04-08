@@ -14,6 +14,7 @@ function ApplicationForm({ user }) {
   const [location, setLocation] = useState("");
   const [term, setTerm] = useState("");
 
+  // FORM INPUT STATE CHANGE HANDLERS
   const handleCompanyChange = (event) => {
     setCompany(event.target.value);
   };
@@ -38,9 +39,11 @@ function ApplicationForm({ user }) {
     setTerm(event.target.value);
   };
 
+  // FUNCTION TO SUBMIT FORM DATA TO DB
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // FORM VALIDATION
     if (company === "") {
       return setFormError("Please enter a company name");
     }
