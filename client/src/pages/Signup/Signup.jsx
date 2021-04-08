@@ -74,7 +74,7 @@ function Signup({ user }) {
       {aboutState === true && <AboutModal closeAboutHandler={closeAboutHandler} />}
       <div className="signup__about" onClick={aboutHandler}>
         <p className="signup__about-text">ABOUT THE CREATOR</p>
-        <img src={OpenArrow} className="signup__about-open" />
+        <img src={OpenArrow} className="signup__about-open" alt="arrow pointing left to signify information about the creator can be shown if clicked" />
       </div>
       <div className="signup__container">
         <form className="signup__form">

@@ -37,10 +37,8 @@ function Login() {
     <section className="login">
       {aboutState === true && <AboutModal closeAboutHandler={closeAboutHandler} />}
       <div className="login__about" onClick={aboutHandler}>
-        <p className="login__about-text" id="b">
-          ABOUT THE CREATOR
-        </p>
-        <img src={OpenArrow} className="login__about-open" id="a" />
+        <p className="login__about-text">ABOUT THE CREATOR</p>
+        <img src={OpenArrow} className="login__about-open" alt="arrow pointing left to signify information about the creator can be shown if clicked" />
       </div>
       <div className="login__container">
         <form className="login__form">

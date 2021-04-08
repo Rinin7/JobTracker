@@ -11,22 +11,22 @@ function AboutModal({ closeAboutHandler }) {
     <div className="about">
       <div className="about__container">
         <div className="about__close">
-          <img className="about__close-arrow" src={CloseArrow} onClick={closeAboutHandler} />
+          <img className="about__close-arrow" src={CloseArrow} onClick={closeAboutHandler} alt="arrow pointing right to signify information about the creator can be hidden if clicked" />
         </div>
         <div className="about__images">
           <div className="about__headshot-container">
-            <img className="about__headshot" src={Headshot} />
+            <img className="about__headshot" src={Headshot} alt="headshot of Ryan Doubinin, creator of JTrack" />
           </div>
 
           <div className="about__socials">
-            <a href="https://www.linkedin.com/in/ryan-doubinin/" target="_blank">
-              <img className="about__socials-logo" src={LinkedIn} />
+            <a href="https://www.linkedin.com/in/ryan-doubinin/" target="_blank" rel="noreferrer">
+              <img className="about__socials-logo" src={LinkedIn} alt="LinkedIn social media logo" title="Ryan Doubinin's LinkedIn" />
             </a>
-            <a href="https://github.com/rinin7" target="_blank">
-              <img className="about__socials-logo" src={GitHub} />
+            <a href="https://github.com/rinin7" target="_blank" rel="noreferrer">
+              <img className="about__socials-logo" src={GitHub} alt="GitHub social media logo" title="Rinin7 GitHub" />
             </a>
-            <a href="mailto:ryan.doubinin@gmail.com" target="_blank">
-              <img className="about__socials-logo" src={Email} />
+            <a href="mailto:ryan.doubinin@gmail.com" target="_blank" rel="noreferrer">
+              <img className="about__socials-logo" src={Email} alt="Email logo" title="ryan.doubinin@gmail.com" />
             </a>
           </div>
         </div>

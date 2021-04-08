@@ -55,8 +55,8 @@ function App() {
     <BrowserRouter>
       <section className="app">
         <Switch>
-          <Route path="/login" exact component={(routerProps) => <Login {...routerProps} user={user} />} />
-          <Route path="/signup" exact component={(routerProps) => <Signup {...routerProps} user={user} />} />
+          <Route path="/login" exact component={(routerProps) => <Login {...routerProps} />} />
+          <Route path="/signup" exact component={(routerProps) => <Signup {...routerProps} />} />
           <PrivateRoute path="/" exact component={(routerProps) => <Home {...routerProps} user={user} />} />
         </Switch>
       </section>
